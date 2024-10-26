@@ -13,6 +13,7 @@ apt install git
 pacman -S git
 ```
 ### Stow
+
 ```
 apt install git stow
 pacman -S stow

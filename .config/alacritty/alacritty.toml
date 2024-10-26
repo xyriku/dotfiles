@@ -8,11 +8,12 @@ import = [
 
 [font]
 normal = { family = "FiraCodeNerdFont", style = "Regular"}
-size = 25
+size = 20
 
 [shell]
 program = "/usr/bin/zsh"
 args = ["--login"]
+
 [window]
 dimensions = { columns = 80, lines = 25}
 opacity = 1
