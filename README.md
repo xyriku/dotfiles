@@ -33,4 +33,10 @@ then use GNU stow to create symlinks
 $ stow .
 ```
 
+If you do not wish to make backup directories, you may use
 
+```
+$ stow --adopt .
+```
+which will move any conflicting files and directories into your dotfiles directory. 
+Make sure to commit all your changes before doing so. 
