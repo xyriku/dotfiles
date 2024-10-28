@@ -1,6 +1,6 @@
 # My Dotfiles
 
-This directory contains my dotfiles
+This repository contains my dotfiles for my linux installations
 
 ## Requirements
 
