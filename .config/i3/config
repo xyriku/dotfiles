@@ -21,7 +21,7 @@ font pango:monospace 12
 assign [class="firefox"] $ws1 
 
 # workspace 2
-#assign [class="Alacritty"] $ws2 
+assign [class="Alacritty"] $ws2 
 
 # workspace 3
 #assign [class="firefox"] $ws3 
