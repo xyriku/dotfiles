@@ -63,7 +63,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id autotiling -w 2
 
 # Set wallpaper
-exec --no-startup-id feh --bg-scale ~/Documents/wallpaper/mikucute.png &
+exec_always --no-startup-id feh --bg-scale ~/Documents/wallpaper/mikucute.png &
 
 # Launch polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
