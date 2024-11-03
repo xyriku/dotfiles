@@ -16,7 +16,7 @@ args = ["--login"]
 
 [window]
 dimensions = { columns = 80, lines = 25}
-opacity = 1
+opacity = 0.8
 
 [env]
 TERM = "xterm-256color"

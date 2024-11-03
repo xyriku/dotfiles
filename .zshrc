@@ -132,7 +132,7 @@ source $ZSH/oh-my-zsh.sh
 #
 #eval "$(starship init zsh)"
 #
-eval "$(oh-my-posh init zsh --config $HOME/dotfiles/catppuccin_mocha.omp.json)"
+eval "$(oh-my-posh init zsh --config $HOME/dotfiles/catppuccin_mocha.toml)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
