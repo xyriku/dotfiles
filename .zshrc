@@ -5,6 +5,7 @@ export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 # Uncomment the following line to disable auto-setting terminal title.
 DISABLE_AUTO_TITLE="true"
 
+# aliases
 
 # Keybindings
 bindkey '^p' history-search-backward
@@ -22,13 +23,6 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 
-# Completion styling
-zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-
-# plugins
-#
 #plugins=(
 #  git tmux flutter gh 
 #  zsh-autosuggestions zsh-syntax-highlighting
@@ -68,9 +62,11 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-zinit light zsh-users/zsh-completions
-zinit light Aloxaf/fzf-tab
+#zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-syntax-highlighting
 
 zinit snippet OMZ::plugins/git/git.plugin.zsh
@@ -78,8 +74,10 @@ zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
 zinit snippet OMZ::plugins/gh/gh.plugin.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#zinit light Aloxaf/fzf-tab
+autoload -U compinit; compinit
+source ~/somewhere/fzf-tab.plugin.zsh
 
 eval "$(zoxide init --cmd cd zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

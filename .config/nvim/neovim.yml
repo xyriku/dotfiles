@@ -1,6 +1,1 @@
----
-base: lua51
-
-globals:
-  vim:
-    any: true
+../../dotfiles/.config/nvim/neovim.yml
