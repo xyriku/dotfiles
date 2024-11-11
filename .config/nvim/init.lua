@@ -47,11 +47,11 @@ now(function()
     vim.o.clipboard = "unnamed,unnamedplus"
     vim.o.updatetime = 1000
     vim.opt.iskeyword:append("-")
-    vim.o.spelllang = "de,en"
+    vim.o.spelllang = "en"
     vim.o.spelloptions = "camel"
     vim.opt.complete:append("kspell")
     vim.o.path = vim.o.path .. ",**"
-    vim.o.tags = vim.o.tags .. ",/home/dosa/.config/nvim/tags"
+    vim.o.tags = vim.o.tags .. ",/home/wumps/.config/nvim/tags"
 
     vim.cmd("colorscheme randomhue")
 end)
@@ -89,7 +89,7 @@ later(function()
     animate.setup({
         scroll = {
             -- Disable Scroll Animations, as the can interfer with mouse Scrolling
-            enable = false,
+            enable = true,
         },
         cursor = {
             timing = animate.gen_timing.cubic({ duration = 50, unit = "total" }),

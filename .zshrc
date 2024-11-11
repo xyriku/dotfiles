@@ -6,6 +6,8 @@ export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 DISABLE_AUTO_TITLE="true"
 
 # aliases
+alias yabridgectl="~/.local/share/yabridge/yabridgectl"
+alias rg="rg --hidden --glob '!.git'"
 
 # Keybindings
 bindkey '^p' history-search-backward
