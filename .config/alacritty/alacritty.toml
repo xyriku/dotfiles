@@ -1,16 +1,9 @@
-import = [
-  # uncomment the flavour you want below:
-  #"~/.config/alacritty/catppuccin-latte.toml"
-  #"~/.config/alacritty/catppuccin-frappe.toml"
-  # "~/.config/alacritty/catppuccin-macchiato.toml"
-   "~/.config/alacritty/catppuccin-mocha.toml"
-]
 
 [font]
 normal = { family = "FiraCodeNerdFont", style = "Regular"}
 size = 16
 
-[shell]
+[terminal.shell]
 program = "/usr/bin/zsh"
 args = ["--login"]
 
@@ -20,4 +13,15 @@ opacity = 1
 
 [env]
 TERM = "xterm-256color"
+
+[general]
+import = [
+  # uncomment the flavour you want below:
+  #"~/.config/alacritty/catppuccin-latte.toml"
+  #"~/.config/alacritty/catppuccin-frappe.toml"
+  # "~/.config/alacritty/catppuccin-macchiato.toml"
+   "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+[terminal]
 

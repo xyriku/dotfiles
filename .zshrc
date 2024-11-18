@@ -8,7 +8,8 @@ DISABLE_AUTO_TITLE="true"
 # aliases
 alias yabridgectl="~/.local/share/yabridge/yabridgectl"
 alias rg="rg --hidden --glob '!.git'"
-
+alias vesktop="vesktop --enable-features=UseOzonePlatform --ozone-platform=wayland"
+alias ls="eza"
 # Keybindings
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
@@ -31,7 +32,7 @@ setopt hist_ignore_dups
 #  fzf-tab) 
   
 
-source ~/.zsh/catppuccin_frappe-zsh-syntax-highlighting.zsh
+source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 #fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 ZSH_TMUX_AUTOSTART=true
 
