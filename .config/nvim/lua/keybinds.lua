@@ -46,7 +46,7 @@ keymap("n", "<leader>mu", function() require('mini.deps').update() end, { desc =
 -- ╔════════════════════╗
 -- ║    Find Keymaps    ║
 -- ╚════════════════════╝
-keymap("n", "<leader>ff", function() require('mini.pick').builtin.files({ tools = 'rg'}) end,
+keymap("n", "<leader>ff", function() require('mini.pick').builtin.files() end,
     { desc = 'Find File' })
 keymap("n", "<leader>fa", function() require('mini.pick').builtin.resume() end,
     { desc = 'Resume Find' })

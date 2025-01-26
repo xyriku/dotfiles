@@ -24,6 +24,7 @@ if not vim.uv.fs_stat(mini_path) then
     vim.cmd('echo "Installed `mini.nvim`" | redraw')
 end
 
+
 --  ─( Set up 'mini.deps' )─────────────────────────────────────────────
 require("mini.deps").setup({ path = { package = path_package } })
 
@@ -35,7 +36,7 @@ local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 now(function()
     vim.g.mapleader = " "
     vim.o.number = true
-    vim.o.relativenumber = false
+    vim.o.relativenumber = true
     vim.o.laststatus = 2
     vim.o.list = true
     vim.o.listchars = table.concat({ "extends:…", "nbsp:␣", "precedes:…", "tab:> " }, ",")
@@ -52,8 +53,9 @@ now(function()
     vim.opt.complete:append("kspell")
     vim.o.path = vim.o.path .. ",**"
     vim.o.tags = vim.o.tags .. ",/home/wumps/.config/nvim/tags"
+    vim.o.termguicolors = true
 
-    vim.cmd("colorscheme randomhue")
+   vim.cmd("colorscheme randomhue")
 end)
 
 --          ╭─────────────────────────────────────────────────────────╮
@@ -81,6 +83,18 @@ now(function()
     end
 end)
 
+--     Installs distant for remote file 
+add({
+    source = 'chipsenkbeil/distant.nvim',
+})
+later(function()
+        require('distant'):setup()
+end)
+
+add({
+   source = 'norcalli/nvim-colorizer.lua',
+})
+--
 later(function()
     require("mini.align").setup()
 end)
@@ -89,7 +103,7 @@ later(function()
     animate.setup({
         scroll = {
             -- Disable Scroll Animations, as the can interfer with mouse Scrolling
-            enable = true,
+            enable = false,
         },
         cursor = {
             timing = animate.gen_timing.cubic({ duration = 50, unit = "total" }),
@@ -480,3 +494,21 @@ if vim.uv.fs_stat(path_modules .. "work.lua") then
     require("work")
 end
 
+--          ┌─────────────────────────────────────────────────────────┐
+--                         Configuration of LSP Servers
+--
+--          └─────────────────────────────────────────────────────────┘
+
+require'lspconfig'.pyright.setup{}
+require'lspconfig'.rust_analyzer.setup{}
+require'lspconfig'.typescript_language_server.setup{}
+require'lspconfig'.lua_ls.setup{
+    settings = {
+        Lua = {
+            diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+    },
+   },
+  }

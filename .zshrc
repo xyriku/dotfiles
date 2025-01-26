@@ -6,10 +6,14 @@ export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 DISABLE_AUTO_TITLE="true"
 
 # aliases
-alias yabridgectl="~/.local/share/yabridge/yabridgectl"
-alias rg="rg --hidden --glob '!.git'"
-alias vesktop="vesktop --enable-features=UseOzonePlatform --ozone-platform=wayland"
-alias ls="eza"
+alias ls="eza --icons=always"
+alias yabaiconfig="nvim ~/.config/yabai/yabairc"
+alias skhdconfig="nvim ~/.config/skhd/skhdrc"
+alias zshconfig="nvim ~/.zshrc"
+alias nvimconfig="nvim ~/.config/nvim/init.lua"
+alias task="~/personal/scripts/changetask.sh"
+alias newquote="~/personal/scripts/newquote.sh"
+
 # Keybindings
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
@@ -38,7 +42,7 @@ ZSH_TMUX_AUTOSTART=true
 
 #source $ZSH/oh-my-zsh.sh
 
-eval "$(oh-my-posh init zsh --config $HOME/dotfiles/catppuccin_mocha.toml)"
+eval "$(oh-my-posh init zsh --config $HOME/.config/catppuccin_mocha.toml)"
 
 
 
@@ -69,18 +73,19 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-#zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-syntax-highlighting
 
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
 zinit snippet OMZ::plugins/gh/gh.plugin.zsh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-#zinit light Aloxaf/fzf-tab
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+zinit light Aloxaf/fzf-tab
 autoload -U compinit; compinit
-source ~/somewhere/fzf-tab.plugin.zsh
 
 eval "$(zoxide init --cmd cd zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

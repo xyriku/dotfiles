@@ -14,23 +14,16 @@ final_space = true
   newline = true
 
   [[blocks.segments]]
-    template = '{{.Icon}}'
+    template = '{{.Icon }}'
     foreground = 'p:os'
     type = 'os'
     style = 'plain'
 
-    [blocks.segments.properties]
-      cache_duration = 'none'
-      endeavouros = "\uF303 "
-
   [[blocks.segments]]
-    template = '{{ .UserName }}@{{ .HostName }}'
+    template = '{{   .UserName }}@{{ .HostName }}'
     foreground = 'p:blue'
     type = 'session'
     style = 'plain'
-
-    [blocks.segments.properties]
-      cache_duration = 'none'
 
   [[blocks.segments]]
     template = '{{ .Path }}'
@@ -39,7 +32,6 @@ final_space = true
     style = 'plain'
 
     [blocks.segments.properties]
-      cache_duration = 'none'
       folder_icon = '....'
       home_icon = '~'
       style = 'full'
@@ -52,7 +44,6 @@ final_space = true
 
     [blocks.segments.properties]
       branch_icon = ' '
-      cache_duration = 'none'
       cherry_pick_icon = ' '
       commit_icon = ' '
       fetch_status = false
@@ -74,9 +65,6 @@ final_space = true
     type = 'executiontime'
     style = 'plain'
 
-    [blocks.segments.properties]
-      cache_duration = 'none'
-
 [[blocks]]
   type = 'prompt'
   alignment = 'left'
@@ -87,6 +75,3 @@ final_space = true
     foreground = 'p:closer'
     type = 'text'
     style = 'plain'
-
-    [blocks.segments.properties]
-      cache_duration = 'none'

@@ -1,11 +1,10 @@
 
 [font]
-normal = { family = "Maple Mono", style = "Regular"}
+normal = { family = "FiraCode Nerd Font", style = "Retina"}
 size = 16
 
 [terminal.shell]
-program = "/usr/bin/zsh"
-args = ["--login"]
+program = "tmux"
 
 [window]
 dimensions = { columns = 80, lines = 25}
