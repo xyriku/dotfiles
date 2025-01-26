@@ -1,0 +1,68 @@
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+# default layout
+yabai -m config layout bsp
+
+# global settings
+yabai -m config mouse_follows_focus          on
+yabai -m config window_placement             second_child
+yabai -m config window_topmost               off
+yabai -m config window_opacity               on
+yabai -m config window_border                on
+yabai -m config window_shadow                on
+yabai -m config active_window_border_color   0xff008bff
+yabai -m config normal_window_border_color   0x01000000
+yabai -m config active_window_opacity        1.0
+yabai -m config normal_window_opacity        1.0 
+yabai -m config split_ratio                  0.50
+yabai -m config auto_balance                 off
+yabai -m config window_animation_duration    0
+
+# configure window padding
+yabai -m config top_padding 8
+yabai -m config bottom_padding 8
+yabai -m config left_padding 8
+yabai -m config right_padding 8
+yabai -m config window_gap 8
+
+yabai -m config --space 1 bottom_padding 60
+yabai -m config --space 2 bottom_padding 60
+
+#modifier for click and drag
+yabai -m config mouse_modifier alt
+
+# modifier + left click drag to move window
+yabai -m config mouse_action1 move
+
+# set modifier + rightclick to resize
+yabai -m config mouse_action2 resize
+
+
+# when another window is dragged onto another, swap
+yabai -m mouse_drop_action swap
+
+# floating
+yabai -m rule --add app="System Settings" manage=off
+yabai -m rule --add app="Calculator" manage=off
+yabai -m rule --add app="Karabiner-Elements" manage=off
+yabai -m rule --add app="Stats" manage=off mouse_follows_focus=off
+yabai -m rule --add app="CleanShot X" manage=off mouse_follows_focus=off
+yabai -m rule --add app="Things" grid=10:3:1:1:1:8 mouse_follows_focus=on sticky=on
+
+# space 1: web
+yabai -m rule --add app="Safari" space=^1
+
+# space 2: terminals
+yabai -m rule --add app="WezTerm" space=^2
+
+yabai -m rule --add app="Moonlight" space=^3
+
+yabai -m rule --add app="Discord" space=^5
+
+# space 4: Music
+yabai -m rule --add app="Music" space=^6
+
+# space 5: out of the way
+yabai -m rule --add app="OBS" space=^6
+
