@@ -20,7 +20,7 @@ final_space = true
     style = 'plain'
 
   [[blocks.segments]]
-    template = '{{   .UserName }}@{{ .HostName }}'
+    template = '   {{   .UserName }}@{{ .HostName }}'
     foreground = 'p:blue'
     type = 'session'
     style = 'plain'

@@ -1,6 +1,6 @@
 
 [font]
-normal = { family = "FiraCode Nerd Font", style = "Retina"}
+normal = { family = "Maple Mono", style = "Regular"}
 size = 16
 
 [terminal.shell]

@@ -17,7 +17,7 @@ config.color_scheme = 'Catppuccin Mocha'
 
 config.font = wezterm.font 'Maple Mono'
 
-config.font_size = 20
+config.font_size = 14
 
 
 -- and finally, return the configuration to wezterm

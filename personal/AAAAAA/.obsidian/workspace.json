@@ -1,0 +1,183 @@
+{
+  "main": {
+    "id": "005157187e455233",
+    "type": "split",
+    "children": [
+      {
+        "id": "6a90da269431124a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "533caf2d8fee9936",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          },
+          {
+            "id": "0d8d9f6b94e244ed",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/Drawing 2025-01-29 16.09.06.excalidraw.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "Drawing 2025-01-29 16.09.06.excalidraw"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "3cbe15ec6dfa9c0c",
+    "type": "split",
+    "children": [
+      {
+        "id": "16ac4cf45c910b6f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ed92ba5bd1573d66",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "1230c5df1f9c2adb",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "5cbf9f87fa5efaeb",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "608f215b1b14252a",
+    "type": "split",
+    "children": [
+      {
+        "id": "0fcc19fb035e6c6e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "79cfd12d9797b6f6",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Excalidraw/Drawing 2025-01-29 16.09.06.excalidraw.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Drawing 2025-01-29 16.09.06.excalidraw"
+            }
+          },
+          {
+            "id": "fa6ea2fc0c2da88b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Excalidraw/Drawing 2025-01-29 16.09.06.excalidraw.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Drawing 2025-01-29 16.09.06.excalidraw"
+            }
+          },
+          {
+            "id": "3b675d1a200b1fd2",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "c93f258788020325",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Excalidraw/Drawing 2025-01-29 16.09.06.excalidraw.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Drawing 2025-01-29 16.09.06.excalidraw"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false
+    }
+  },
+  "active": "0d8d9f6b94e244ed",
+  "lastOpenFiles": [
+    "Untitled.canvas",
+    "Excalidraw/Drawing 2025-01-29 16.09.06.excalidraw.md",
+    "Excalidraw",
+    "Welcome.md",
+    "test"
+  ]
+}

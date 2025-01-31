@@ -13,6 +13,7 @@ alias zshconfig="nvim ~/.zshrc"
 alias nvimconfig="nvim ~/.config/nvim/init.lua"
 alias task="~/personal/scripts/changetask.sh"
 alias newquote="~/personal/scripts/newquote.sh"
+alias i3config="~/.config/i3/config"
 
 # Keybindings
 bindkey '^p' history-search-backward
@@ -31,10 +32,10 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 
 #plugins=(
-#  git tmux flutter gh 
+#  git tmux flutter gh
 #  zsh-autosuggestions zsh-syntax-highlighting
-#  fzf-tab) 
-  
+#  fzf-tab)
+
 
 source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 #fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
@@ -79,13 +80,13 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
 zinit snippet OMZ::plugins/gh/gh.plugin.zsh
-
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 zinit light Aloxaf/fzf-tab
 autoload -U compinit; compinit
 
 eval "$(zoxide init --cmd cd zsh)"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 #source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
