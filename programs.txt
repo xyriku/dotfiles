@@ -1,0 +1,35 @@
+terminal:
+    zsh
+    fzf/fzf-tab
+    eza (ls replacement)
+    oh my posh
+    btop
+    tmux
+
+window manager:
+    hyprland
+    wayland
+    thingy thingy
+    proper nvidia drivers
+
+games:
+    steam
+    wine
+    tetrio
+
+code:
+    LSPs (pyright, clang, rust-analyzer, typescript-language-server)
+    yeah
+    nvim(from my github)
+
+videos:
+    mpv
+    vlc
+
+misc:
+    easy-effects
+    obsidian
+    anki
+    reaper
+    transmission-cli (torrents)
+

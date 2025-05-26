@@ -1,0 +1,108 @@
+{
+    "layer": "top", // Waybar at top layer
+    "output": "DP-1",
+    "position": "top", // Waybar at the bottom of your screen
+   // "height": 20, // Waybar height
+    "spacing": 5,
+    // "width": 1366, // Waybar width
+    // Choose the order of the modules
+    "modules-left": [
+    "custom/notification", 
+    "niri/workspaces"
+    ],
+
+    "modules-center": [
+    "niri/window"
+    ],
+
+    "modules-right": [
+    "pulseaudio", 
+    "cpu", 
+    "memory", 
+    "clock"
+   ],
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+     "niri/workspaces": {
+        "format" : "{icon}",
+        "format-icons": {
+               "active": "",
+               "default": ""
+            },
+    },
+    "niri/window": {
+        "format": "{}",
+        "max-length": 50,
+        },
+     "custom/notification": {
+        "tooltip": true,
+        "format": "<span color='#211F2B' bgcolor='#ffffff' > {icon} </span>",
+        "format-icons": {
+            "notification": "󱅫",
+            "none": "󰂚",
+            "dnd-notification": "󰂛",
+            "dnd-none": "󰂛",
+            "inhibited-notification": "󱅫",
+            "inhibited-none": "󰂚",
+            "dnd-inhibited-notification": "󰂛",
+            "dnd-inhibited-none": "󰂛"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    "clock": {
+        "format": "<span color='#211F2B' bgcolor='#ffffff' >  </span> {:%a, %H:%M}",
+        "format-alt": "{:%A, %B %d, %Y (%R)} ",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#f9e2af'><b>{}</b></span>",
+                              "days":       "<span color='#FFFFFF'><b>{}</b></span>",
+                              "weeks":      "<span color='#89dceb'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#fab387'><b>{}</b></span>",
+                              "today":      "<span color='#f38ba8'><b><u>{}</u></b></span>"
+                              },
+                    },
+        "actions":  {
+                    "on-click-right": "mode",
+                    },
+    },
+    "cpu": {
+        "format": "<span color ='#211F2B' bgcolor='#ffffff' >  </span> {usage:2}%"
+    },
+    "memory": {
+        "format": "<span color ='#211F2B' bgcolor='#89dceb' >  </span> {:2}%"
+    },
+    "network": {
+        // "interface": "wlp2s0", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-disconnected": "Disconnected ⚠"
+    },
+    "pulseaudio": {
+        "format": "<span color='#211F2B' bgcolor='#89dceb' > {icon}</span> {volume:2}%",
+        //"scroll-step": 1,
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": " ",
+        "format-icons": {
+            "headphones": " ",
+            "handsfree": " ",
+            "headset": " ",
+            "phone": " ",
+            "portable": " ",
+            "car": " ",
+            "default": [" ", " "]
+        },
+        "on-click": "pavucontrol"
+    },
+}

@@ -1,0 +1,448 @@
+// This config is in the KDL format: https://kdl.dev
+// "/-" comments out the following node.
+// Check the wiki for a full description of the configuration:
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Overview
+
+// Input device configuration.
+// Find the full list of options on the wiki:
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
+
+input {
+    keyboard {
+        xkb {
+            // For more information, see xkeyboard-config(7).
+
+            // For example:
+            // layout "us,ru"
+            // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
+        }
+    }
+
+    // Next sections include libinput settings.
+    // Omitting settings disables them, or leaves them at their default values.
+    touchpad {
+        tap
+        natural-scroll
+    }
+
+    mouse {
+    }
+
+    trackpoint {
+   }
+
+    warp-mouse-to-focus
+
+}
+
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+cursor {
+    xcursor-theme "Simp1e-Catppuccin-Mocha"
+    xcursor-size 40
+    hide-after-inactive-ms 5000
+}
+
+// Monitors
+
+output "DP-1" {
+    mode "2560x1440@143.87"
+    position x=0 y=0
+}
+
+output "HDMI-A-1" {
+    mode "2560x1080@59.978"
+    position x=2560 y=0
+}
+
+// workspaces
+
+workspace "main" {
+        open-on-output "DP-1"
+    }
+
+workspace "games" {
+        open-on-output "DP-1"
+    }
+
+workspace "art" {
+        open-on-output "DP-1"
+}
+
+
+workspace "2nd main" {
+        open-on-output "HDMI-A-1"
+    }
+
+
+
+// layout
+
+layout {
+    // Set gaps around windows in logical pixels.
+    gaps 8
+
+    center-focused-column "never"
+    always-center-single-column
+
+     shadow {
+        on
+    }
+    default-column-width {}
+
+    focus-ring {
+        width 2
+
+        // Color of the ring on the active monitor.
+        active-color "#89dceb"
+
+        // Color of the ring on inactive monitors.
+        inactive-color "#505050"
+
+    }
+
+    border {
+
+        width 3
+        active-color "#89dceb"
+        inactive-color "#505050"
+
+    }
+
+    struts {
+        // left 16
+        // right 16
+        // top 64
+        // bottom 64
+    }
+}
+
+
+prefer-no-csd
+
+// You can change the path where screenshots are saved.
+// A ~ at the front will be expanded to the home directory.
+// The path is formatted with strftime(3) to give you the screenshot date and time.
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+
+window-rule {
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    default-column-width {}
+}
+
+// Open the Firefox picture-in-picture player as floating by default.
+window-rule {
+    // This app-id regular expression will work for both:
+    // - host Firefox (app-id is "firefox")
+    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+// Example: block out two password managers from screen capture.
+// (This example rule is commented out with a "/-" in front.)
+/-window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+
+    block-out-from "screen-capture"
+
+    // Use this instead if you want them visible on third-party screenshot tools.
+    // block-out-from "screencast"
+}
+
+window-rule {
+    geometry-corner-radius 0
+    clip-to-geometry true
+}
+
+binds {
+
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    // Suggested binds for running programs: terminal, app launcher, screen locker.
+    Mod+Return { spawn "alacritty" "-e" "tmux" "new" "-A"; }
+    Mod+Shift+Return { spawn "alacritty" "-e" "tmux"; }
+    Mod+D { spawn "fuzzel"; }
+    Super+Alt+L { spawn "swaylock"; }
+    Mod+1 { spawn "firefox"; }
+    Mod+2 { spawn "thunar"; }
+    Mod+3 { spawn ""; }
+
+    // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
+
+    // Example volume keys mappings for PipeWire & WirePlumber.
+    // The allow-when-locked=true property makes them work even when the session is locked.
+    XF86AudioRaiseVolume allow-when-locked=true hotkey-overlay-title=null{ spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
+    XF86AudioLowerVolume allow-when-locked=true hotkey-overlay-title=null{ spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+    XF86AudioMute        allow-when-locked=true hotkey-overlay-title=null{ spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute     allow-when-locked=true hotkey-overlay-title=null{ spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+    XF86AudioPlay        allow-when-locked=true hotkey-overlay-title=null{ spawn "playerctl" "play-pause"; }
+    XF86AudioNext        allow-when-locked=true hotkey-overlay-title=null{ spawn "playerctl" "next"; }
+    XF86AudioPrev        allow-when-locked=true hotkey-overlay-title=null{ spawn "playerctl" "previous"; }
+
+    XF86Copy                                    { spawn "wl-copy"; }
+    XF86Paste                                   { spawn "wl-paste"; }
+
+    Mod+Q hotkey-overlay-title=null{ close-window; }
+
+    Mod+H     hotkey-overlay-title=null{ focus-column-left-or-last; }
+    Mod+J     hotkey-overlay-title=null{ focus-window-or-workspace-down; }
+    Mod+K     hotkey-overlay-title=null{ focus-window-or-workspace-up; }
+    Mod+L     hotkey-overlay-title=null{ focus-column-right-or-first; }
+
+    Mod+Ctrl+H   hotkey-overlay-title=null  { move-column-left; }
+    Mod+Ctrl+J    hotkey-overlay-title=null { move-window-down-or-to-workspace-down; }
+    Mod+Ctrl+K    hotkey-overlay-title=null { move-window-up-or-to-workspace-up; }
+    Mod+Ctrl+L    hotkey-overlay-title=null { move-column-right; }
+
+
+
+    Mod+U hotkey-overlay-title=null{ focus-column-first; }
+    Mod+I  hotkey-overlay-title=null{ focus-column-last; }
+    Mod+Ctrl+Home hotkey-overlay-title=null{ move-column-to-first; }
+    Mod+Ctrl+End  hotkey-overlay-title=null{ move-column-to-last; }
+
+    Mod+Shift+H    hotkey-overlay-title=null { focus-monitor-left; }
+    Mod+Shift+J    hotkey-overlay-title=null { focus-monitor-down; }
+    Mod+Shift+K     hotkey-overlay-title=null{ focus-monitor-up; }
+    Mod+Shift+L     hotkey-overlay-title=null{ focus-monitor-right; }
+
+    Mod+Shift+Ctrl+H     hotkey-overlay-title=null{ move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+J     hotkey-overlay-title=null{ move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+K     hotkey-overlay-title=null{ move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+L     hotkey-overlay-title=null{ move-column-to-monitor-right; }
+
+    // Alternatively, there are commands to move just a single window:
+    // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
+    // ...
+
+    // And you can also move a whole workspace to another monitor:
+    // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
+    // ...
+
+    // Alternatively, there are commands to move just a single window:
+    // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
+    // ...
+
+    Mod+Shift+Page_Down hotkey-overlay-title=null{ move-workspace-down; }
+    Mod+Shift+Page_Up   hotkey-overlay-title=null{ move-workspace-up; }
+    Mod+Shift+U         hotkey-overlay-title=null{ move-workspace-down; }
+    Mod+Shift+I         hotkey-overlay-title=null{ move-workspace-up; }
+
+    // You can bind mouse wheel scroll ticks using the following syntax.
+    // These binds will change direction based on the natural-scroll setting.
+    //
+    // To avoid scrolling through workspaces really fast, you can use
+    // the cooldown-ms property. The bind will be rate-limited to this value.
+    // You can set a cooldown on any bind, but it's most useful for the wheel.
+    Mod+WheelScrollDown      cooldown-ms=150 hotkey-overlay-title=null{ focus-workspace-down; }
+    Mod+WheelScrollUp        cooldown-ms=150 hotkey-overlay-title=null{ focus-workspace-up; }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 hotkey-overlay-title=null{ move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 hotkey-overlay-title=null{ move-column-to-workspace-up; }
+
+    Mod+WheelScrollRight     hotkey-overlay-title=null { focus-column-right; }
+    Mod+WheelScrollLeft      hotkey-overlay-title=null { focus-column-left; }
+    Mod+Ctrl+WheelScrollRight hotkey-overlay-title=null{ move-column-right; }
+    Mod+Ctrl+WheelScrollLeft  hotkey-overlay-title=null{ move-column-left; }
+
+    // Usually scrolling up and down with Shift in applications results in
+    // horizontal scrolling; these binds replicate that.
+    Mod+Shift+WheelScrollDown     hotkey-overlay-title=null { focus-column-right; }
+    Mod+Shift+WheelScrollUp        hotkey-overlay-title=null{ focus-column-left; }
+    Mod+Ctrl+Shift+WheelScrollDown hotkey-overlay-title=null{ move-column-right; }
+    Mod+Ctrl+Shift+WheelScrollUp   hotkey-overlay-title=null{ move-column-left; }
+
+    // Similarly, you can bind touchpad scroll "ticks".
+    // Touchpad scrolling is continuous, so for these binds it is split into
+    // discrete intervals.
+    // These binds are also affected by touchpad's natural-scroll, so these
+    // example binds are "inverted", since we have natural-scroll enabled for
+    // touchpads by default.
+    // Mod+TouchpadScrollDown { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
+    // Mod+TouchpadScrollUp   { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
+
+    // You can refer to workspaces by index. However, keep in mind that
+    // niri is a dynamic workspace system, so these commands are kind of
+    // "best effort". Trying to refer to a workspace index bigger than
+    // the current workspace count will instead refer to the bottommost
+    // (empty) workspace.
+    //
+    // For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
+    // will all refer to the 3rd workspace.
+
+    // Alternatively, there are commands to move just a single window:
+    // Mod+Ctrl+1 { move-window-to-workspace 1; }
+
+    // Switches focus between the current and the previous workspace.
+    // Mod+Tab { focus-workspace-previous; }
+
+    // The following binds move the focused window in and out of a column.
+    // If the window is alone, they will consume it into the nearby column to the side.
+    // If the window is already in a column, they will expel it out.
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+
+    // Consume one window from the right to the bottom of the focused column.
+    Mod+Comma  { consume-window-into-column; }
+    // Expel the bottom window from the focused column to the right.
+    Mod+Period { expel-window-from-column; }
+
+    Mod+F hotkey-overlay-title=null { maximize-column; }
+    Mod+Ctrl+F hotkey-overlay-title=null { fullscreen-window; }
+    Mod+Shift+F hotkey-overlay-title="Windowed Fullscreen" { toggle-windowed-fullscreen; }
+    Mod+A { center-column; }
+
+    // Finer width adjustments.
+    // This command can also:
+    // * set width in pixels: "1000"
+    // * adjust width in pixels: "-5" or "+5"
+    // * set width as a percentage of screen width: "25%"
+    // * adjust width as a percentage of screen width: "-10%" or "+10%"
+    // Pixel sizes use logical, or scaled, pixels. I.e. on an output with scale 2.0,
+    // set-column-width "100" will make the column occupy 200 physical screen pixels.
+    Mod+Equal hotkey-overlay-title=null { set-column-width "+10%"; }
+    Mod+Minus hotkey-overlay-title=null { set-column-width "-10%"; }
+
+    // Finer height adjustments when in column with other windows.
+    Mod+Shift+Minus hotkey-overlay-title=null { set-window-height "-10%"; }
+    Mod+Shift+Equal hotkey-overlay-title=null { set-window-height "+10%"; }
+
+    // Move the focused window between the floating and the tiling layout.
+    Mod+G      hotkey-overlay-title=null { toggle-window-floating; }
+    Mod+Shift+G hotkey-overlay-title=null{ switch-focus-between-floating-and-tiling; }
+
+    // Actions to switch layouts.
+    // Note: if you uncomment these, make sure you do NOT have
+    // a matching layout switch hotkey configured in xkb options above.
+    // Having both at once on the same hotkey will break the switching,
+    // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
+    // Mod+Space       { switch-layout "next"; }
+    // Mod+Shift+Space { switch-layout "prev"; }
+
+    Print hotkey-overlay-title=null{ screenshot; }
+    Ctrl+Print hotkey-overlay-title=null{ screenshot-screen; }
+    Alt+Print hotkey-overlay-title=null{ screenshot-window; }
+
+    Mod+R cooldown-ms=500 hotkey-overlay-title="Record Region" { spawn "~/personal/personal/scripts/testrecord.sh"; }
+    Mod+Ctrl+R cooldown-ms=500 hotkey-overlay-title="Record Fullscreen" { spawn "~/personal/personal/scripts/testrecord.sh" "--fullscreen"; }
+    Mod+Shift+R cooldown-ms=500 hotkey-overlay-title="Record Region with Sound" { spawn "~/personal/personal/scripts/testrecord.sh" "--sound"; }
+    Mod+Ctrl+Shift+R cooldown-ms=500 hotkey-overlay-title="Record Fullscreen with Sound" { spawn "~/personal/personal/scripts/testrecord.sh" "--fullscreen-sound"; }
+
+    Mod+B hotkey-overlay-title="Clipboard History" { spawn "bash" "/home/wumps/personal/personal/scripts/cliphistory.sh"; }
+   // Mod+B hotkey-overlay-title="Clipboard History" { spawn "clipse-gui"; }
+    
+    Alt+Tab hotkey-overlay-title="Toggle Overview" { toggle-overview; }
+
+    Mod+T { expand-column-to-available-width; }
+    
+    // The quit action will show a confirmation dialog to avoid accidental exits.
+    Mod+Shift+E { quit; }
+    Ctrl+Alt+Delete { quit; }
+
+    // Powers off the monitors. To turn them back on, do any input like
+    // moving the mouse or pressing any other key.
+    Mod+Shift+P hotkey-overlay-title=null { power-off-monitors; }
+
+
+    // Other keybinds
+    
+}
+
+
+
+// Custom
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+window-rule {
+        match app-id="firefox" title="^[Main]$"
+        open-on-workspace "main"
+    }
+
+window-rule {
+        match app-id="firefox" title="^[YouTube]$"
+        open-on-workspace "2nd main"
+        default-column-width { proportion 0.6; }
+    }
+
+// Apps to 2nd monitor
+window-rule {
+        match app-id="discord"
+        match app-id="vesktop"
+        default-column-width { proportion 0.4; }
+
+        open-on-workspace "2nd main"
+    }
+
+// Apps to games workspace
+window-rule {
+            match app-id="steam"
+            match app-id=r#"^.exe$"#
+            open-on-workspace "games"
+}
+window-rule {
+        match app-id="page.kramo.Cartridges"
+        match app-id="itch"
+        match app-id="ffxiv_dx11.exe"
+
+        open-fullscreen true
+        open-on-workspace "games"
+    }
+
+// Apps to art workspace
+window-rule {
+        match app-id="krita"
+        match app-id="CLIP STUDIO PAINT"
+        match app-id="sai2.exe" 
+        match app-id="REAPER"
+        open-on-workspace "art"
+}
+
+window-rule {
+    match is-window-cast-target=true
+
+    focus-ring {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+
+    border {
+        inactive-color "#7d0d2d"
+    }
+
+    shadow {
+        color "#f38ba8"
+    }
+
+    tab-indicator {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+
+}
+
+
+debug {
+    wait-for-frame-completion-before-queueing
+    wait-for-frame-completion-in-pipewire
+}
+
+// Startup apps
+spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+
+spawn-at-startup "xwayland-satellite"
+spawn-at-startup "discord"
+spawn-at-startup "steam"
+spawn-at-startup "zen"
+
+environment {
+    DISPLAY ":0"
+}

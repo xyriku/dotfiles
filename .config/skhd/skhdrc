@@ -1,0 +1,65 @@
+# change window focus within space
+alt - h : yabai -m window --focus west || yabai -m window --focus stack.prev || yabai -m window --focus stack.last
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east || yabai -m window --focus stack.next || yabai -m window --focus stack.first
+
+# window management
+alt - x : yabai -m window --close
+
+# rotate layout clockwise
+alt - r : yabai -m space --rotate 90
+
+# toggle split
+alt - e : yabai -m space --toggle split
+
+# toggle window float
+alt - t : yabai -m window --toggle float 
+
+
+# maximize a window
+alt - f : yabai -m window --toggle zoom-fullscreen
+
+alt - d : yabai -m window --toggle zoom-parent
+
+# balance out tree of windows (resize to occupy same area)
+shift + alt - e : yabai -m space --balance
+
+# focus space
+
+meh - s : yabai -m space --focus 1;
+meh - w : yabai -m space --focus 2;
+meh - l : yabai -m space --focus 3;
+meh - e : yabai -m space --focus 4;
+meh - d : yabai -m space --focus 5;
+meh - v : yabai -m space --focus 6;
+meh - m : yabai -m window --focus (yabai -m query --windows |jq '.[] | select (.app  == "Music") | .id');
+
+# swap windows
+shift + alt - h : yabai -m window --swap west
+shift + alt - j : yabai -m window --swap south
+shift + alt - k : yabai -m window --swap north
+shift + alt - l : yabai -m window --swap east
+
+# move window within space and split
+ctrl + alt - h : yabai -m window --warp west
+ctrl + alt - j : yabai -m window --warp south
+ctrl + alt - k : yabai -m window --warp north
+ctrl + alt - l : yabai -m window --warp east
+
+# move window to space #
+alt - 1 : yabai -m window --display 1;
+alt - 2 : yabai -m window --display 2;
+alt - 3 : yabai -m window --display 3;
+
+# focus recent space
+meh - tab : yabai -m space --focus recent
+
+# stop/start/restart yabai
+ctrl + alt - q : yabai --stop-service
+ctrl + alt - s : yabai --start-service
+ctrl + alt - r : yabai --restart-service
+
+
+# open terminal
+cmd - return : open -na wezterm
