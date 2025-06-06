@@ -15,6 +15,7 @@ alias task="~/personal/scripts/changetask.sh"
 alias newquote="~/personal/scripts/newquote.sh"
 alias i3config="~/.config/i3/config"
 alias niriconfig="~/.config/niri/config.kdl"
+
 # Keybindings
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
@@ -37,13 +38,13 @@ setopt hist_ignore_dups
 #  fzf-tab)
 
 
-source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
+source ~/.zsh/catppuccin_latte-zsh-syntax-highlighting.zsh
 #fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 ZSH_TMUX_AUTOSTART=true
 
 #source $ZSH/oh-my-zsh.sh
 
-eval "$(oh-my-posh init zsh --config $HOME/.config/catppuccin_mocha.toml)"
+eval "$(oh-my-posh init zsh --config $HOME/catppuccin_latte.omp.json)"
 
 
 
@@ -79,7 +80,6 @@ zinit light zsh-users/zsh-syntax-highlighting
 
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
-zinit snippet OMZ::plugins/gh/gh.plugin.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 zinit light Aloxaf/fzf-tab

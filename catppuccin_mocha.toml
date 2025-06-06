@@ -2,11 +2,11 @@ version = 3
 final_space = true
 
 [palette]
-  blue = '#89B4FA'
+  blue = '#'
   closer = 'p:os'
-  lavender = '#B4BEFE'
+  lavender = '#7287fd'
   os = '#ACB0BE'
-  pink = '#F5C2E7'
+  pink = '#ea76cb'
 
 [[blocks]]
   type = 'prompt'

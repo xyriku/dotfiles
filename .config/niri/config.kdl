@@ -9,6 +9,7 @@
 
 input {
     keyboard {
+        numlock
         xkb {
             // For more information, see xkeyboard-config(7).
 
@@ -127,7 +128,7 @@ prefer-no-csd
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
 // The path is formatted with strftime(3) to give you the screenshot date and time.
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S.png"
 
 
 window-rule {
@@ -140,7 +141,11 @@ window-rule {
     // This app-id regular expression will work for both:
     // - host Firefox (app-id is "firefox")
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id=r#"zen$"# title="^Picture-in-Picture$"
+    match app-id="zen$" title="^Extension$"
+    match app-id="gsr ui" title="gsr ui"
+    match app-id="steam" title="Friends List"
+    match app-id="steam" title="Settings"
     open-floating true
 }
 
@@ -157,7 +162,7 @@ window-rule {
 }
 
 window-rule {
-    geometry-corner-radius 0
+    geometry-corner-radius 2
     clip-to-geometry true
 }
 
@@ -170,9 +175,11 @@ binds {
     Mod+Shift+Return { spawn "alacritty" "-e" "tmux"; }
     Mod+D { spawn "fuzzel"; }
     Super+Alt+L { spawn "swaylock"; }
-    Mod+1 { spawn "firefox"; }
-    Mod+2 { spawn "thunar"; }
-    Mod+3 { spawn ""; }
+
+    Mod+P {spawn "~/personal/personal/scripts/windowpicker.sh"; }
+    Mod+6 { spawn "zen"; }
+    Mod+7 { spawn "thunar"; }
+    Mod+8 { spawn ""; }
 
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
 
@@ -195,6 +202,11 @@ binds {
     Mod+J     hotkey-overlay-title=null{ focus-window-or-workspace-down; }
     Mod+K     hotkey-overlay-title=null{ focus-window-or-workspace-up; }
     Mod+L     hotkey-overlay-title=null{ focus-column-right-or-first; }
+
+    Mod+KP_Home     hotkey-overlay-title=null{ focus-column-left-or-last; }
+    Mod+KP_Up   hotkey-overlay-title=null{ focus-window-or-workspace-down; }
+    Mod+KP_Begin   hotkey-overlay-title=null{ focus-window-or-workspace-up; }
+    Mod+KP_Prior     hotkey-overlay-title=null{ focus-column-right-or-first; }
 
     Mod+Ctrl+H   hotkey-overlay-title=null  { move-column-left; }
     Mod+Ctrl+J    hotkey-overlay-title=null { move-window-down-or-to-workspace-down; }
@@ -325,7 +337,7 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
-    Print hotkey-overlay-title=null{ screenshot; }
+    Print hotkey-overlay-title=null{ spawn "~/personal/personal/scripts/testupload.sh"; }
     Ctrl+Print hotkey-overlay-title=null{ screenshot-screen; }
     Alt+Print hotkey-overlay-title=null{ screenshot-window; }
 
@@ -439,10 +451,12 @@ debug {
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 
 spawn-at-startup "xwayland-satellite"
-spawn-at-startup "discord"
+spawn-at-startup "vesktop"
 spawn-at-startup "steam"
 spawn-at-startup "zen"
 
 environment {
     DISPLAY ":0"
+    QT_QPA_PLATFORM "wayland"
+	XDG_CURRENT_DESKTOP "niri"
 }

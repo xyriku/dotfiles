@@ -6,9 +6,9 @@ version = 2
 [palette]
 os = "#ACB0BE"
 closer = "p:os"
-pink = "#F5C2E7"
-lavender = "#B4BEFE"
-blue = "#89B4FA"
+pink = "#ea76cb"
+lavender = "#7287fd"
+blue = "#1e66f5"
 
 [[blocks]]
 alignment = "left"

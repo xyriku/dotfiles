@@ -8,7 +8,8 @@
     // Choose the order of the modules
     "modules-left": [
     "custom/notification", 
-    "niri/workspaces"
+    "niri/workspaces",
+    "tray"
     ],
 
     "modules-center": [
