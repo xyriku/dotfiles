@@ -131,56 +131,23 @@ later(function()
         palette = {
         --    Catppuccin Frappe
 --
---        --    base00 = '#1e1e2e',
---        --    base01 = '#181825',
---        --    base02 = '#313244',
---        --    base03 = '#45475a',
---        --    base04 = '#585b70',
---        --    base05 = '#cdd6f4',
---        --    base06 = '#f5e0dc',
---        --    base07 = '#b4befe',
---        --    base08 = '#f38ba8',
---        --    base09 = '#fab387',
---        --    base0A = '#f9e2af',
---        --    base0B = '#a6e3a1',
---        --    base0C = '#94e2d5',
---        --    base0D = '#89b4fa',
---        --    base0E = '#cba6f7',
---        --    base0F = '#f2cdcd'
+   base00 = '#1e1e2e',
+   base01 = '#181825',
+   base02 = '#313244',
+   base03 = '#45475a',
+   base04 = '#585b70',
+   base05 = '#cdd6f4',
+   base06 = '#f5e0dc',
+   base07 = '#b4befe',
+   base08 = '#f38ba8',
+   base09 = '#fab387',
+   base0A = '#f9e2af',
+   base0B = '#a6e3a1',
+   base0C = '#94e2d5',
+   base0D = '#89b4fa',
+   base0E = '#cba6f7',
+   base0F = '#f2cdcd'
 --
-    base00 = "#eff1f5", --# base
-    base01 = "#e6e9ef", --# mantle
-    base02 = "#ccd0da", --# surface0
-    base03 = "#bcc0cc", --# surface1
-    base04 = "#acb0be", --# surface2
-    base05 = "#4c4f69", --# text
-    base06 = "#dc8a78", --# rosewater
-    base07 = "#7287fd", --# lavender
-    base08 = "#d20f39", --# red
-    base09 = "#fe640b", --# peach
-    base0A = "#df8e1d", --# yellow
-    base0B = "#40a02b", --# green
-    base0C = "#179299", --# teal
-    base0D = "#1e66f5", --# blue
-    base0E = "#8839ef", --# mauve
-    base0F = "#dd7878", --# flamingo
---
---            base00 = "#24283b",
---            base01 = "#1f2335",
---            base02 = "#292e42",
---            base03 = "#565f89",
---            base04 = "#a9b1d6",
---            base05 = "#c0caf5",
---            base06 = "#c0caf5",
---            base07 = "#c0caf5",
---            base08 = "#f7768e",
---            base09 = "#ff9e64",
---            base0A = "#e0af68",
---            base0B = "#9ece6a",
---            base0C = "#1abc9c",
---            base0D = "#41a6b5",
---            base0E = "#bb9af7",
---            base0F = "#ff007c",
         }
     })
 end)

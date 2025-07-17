@@ -45,7 +45,6 @@ gestures {
 cursor {
     xcursor-theme "Simp1e-Catppuccin-Mocha"
     xcursor-size 40
-    hide-after-inactive-ms 5000
 }
 
 // Monitors
@@ -91,7 +90,6 @@ layout {
     always-center-single-column
 
      shadow {
-        on
     }
     default-column-width {}
 
@@ -336,7 +334,6 @@ binds {
     // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
-
     Print hotkey-overlay-title=null{ spawn "~/personal/personal/scripts/testupload.sh"; }
     Ctrl+Print hotkey-overlay-title=null{ screenshot-screen; }
     Alt+Print hotkey-overlay-title=null{ screenshot-window; }

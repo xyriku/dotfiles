@@ -38,13 +38,13 @@ setopt hist_ignore_dups
 #  fzf-tab)
 
 
-source ~/.zsh/catppuccin_latte-zsh-syntax-highlighting.zsh
+source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 #fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 ZSH_TMUX_AUTOSTART=true
 
 #source $ZSH/oh-my-zsh.sh
 
-eval "$(oh-my-posh init zsh --config $HOME/catppuccin_latte.omp.json)"
+eval "$(oh-my-posh init zsh --config $HOME/catppuccin_mocha.toml)"
 
 
 
