@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../../.config"
+		},
+		{
+			"path": "../../../../../../run/user/1000/kio-fuse-sxMBhz/smb/tower.local/compose"
+		},
+		{
+			"path": "../../../../Documents/qmk_firmware"
+		}
+	]
+}

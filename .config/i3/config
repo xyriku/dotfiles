@@ -22,8 +22,6 @@ exec --no-startup-id /home/wumps/.screenlayout/screenlayout.sh
 #assign [class="firefox"] $ws1
 assign [class="zen"] $ws1
 
-# workspace 2
-assign [class="Alacritty"] $ws2
 # workspace 3
 assign [class="krita"] $ws3
 
@@ -45,7 +43,8 @@ assign [class="vesktop"] $ws6
 
 assign [class="discord"] $ws6
 
-
+# workspace 10
+assign [class="easyeffects"] $ws10
 # force floating
 for_window [class="Nemo"] floating enable
 
@@ -80,7 +79,7 @@ bindsym $mod+p exec picom -f &
 bindsym $mod+Ctrl+P exec killall picom
 
 # Screenshot region
-bindsym Print exec --no-startup-id ~/.config/i3/screenshotupload.sh
+bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/screenshotupload.sh
 
 # Discord
 exec --no-startup-id vesktop
@@ -88,6 +87,11 @@ exec --no-startup-id vesktop
 # Firefox
 exec --no-startup-id firefox
 
+exec_always --no-startup-id alacritty --class "scratch-terminal" -e tmux new -A
+for_window [class="scratch-terminal"] move scratchpad, resize set 80ppt 80ppt, move position 320 1440
+
+exec_always --no-startup-id youtube-music --class "music"
+for_window [class="music"] move scratchpad, resize set 80ppt 50ppt, move position 50ppt 50ppt
 
 #MULTIPLE MONITOR SETUP
 
@@ -104,6 +108,7 @@ workspace 10 output HDMI-0
 
 # autotiling config
 
+exec_always autotiling
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -123,7 +128,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec alacritty -e tmux new -A
+bindsym $mod+Ctrl+Return exec alacritty -e tmux new -A
 bindsym $mod+Shift+Return exec alacritty -e tmux
 
 # kill focused window
@@ -210,6 +215,9 @@ bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
+bindsym $mod+Return [class="scratch-terminal"] scratchpad show 
+bindsym $mod+s [class="music"] scratchpad show
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
@@ -221,6 +229,7 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
+
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

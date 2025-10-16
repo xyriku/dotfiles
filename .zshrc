@@ -15,7 +15,7 @@ alias task="~/personal/scripts/changetask.sh"
 alias newquote="~/personal/scripts/newquote.sh"
 alias i3config="~/.config/i3/config"
 alias niriconfig="~/.config/niri/config.kdl"
-
+alias fubu="noglob mpv '--ytdl-format=bestvideo[height<=?1440]+bestaudio/best'"
 # Keybindings
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
@@ -31,6 +31,7 @@ setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups
+setopt noclobber
 
 #plugins=(
 #  git tmux flutter gh

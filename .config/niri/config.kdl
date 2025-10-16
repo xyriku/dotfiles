@@ -7,6 +7,8 @@
 // Find the full list of options on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 
+spawn-at-startup "qs" "-c" "noctalia-shell"
+
 input {
     keyboard {
         numlock
@@ -18,6 +20,8 @@ input {
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
         }
     }
+
+    workspace-auto-back-and-forth
 
     // Next sections include libinput settings.
     // Omitting settings disables them, or leaves them at their default values.
@@ -32,7 +36,7 @@ input {
     trackpoint {
    }
 
-    warp-mouse-to-focus
+    focus-follows-mouse max-scroll-amount="10%"
 
 }
 
@@ -43,8 +47,8 @@ gestures {
 }
 
 cursor {
-    xcursor-theme "Simp1e-Catppuccin-Mocha"
-    xcursor-size 40
+    xcursor-theme "linuxfubu"
+    xcursor-size 36
 }
 
 // Monitors
@@ -56,7 +60,7 @@ output "DP-1" {
 
 output "HDMI-A-1" {
     mode "2560x1080@59.978"
-    position x=2560 y=0
+    position x=0 y=-1080
 }
 
 // workspaces
@@ -70,6 +74,10 @@ workspace "games" {
     }
 
 workspace "art" {
+        open-on-output "DP-1"
+}
+
+workspace "scratchpad" {
         open-on-output "DP-1"
 }
 
@@ -106,15 +114,15 @@ layout {
 
     border {
 
-        width 3
+        width 1
         active-color "#89dceb"
-        inactive-color "#505050"
+        inactive-color "#89dceb"
 
     }
 
     struts {
-        // left 16
-        // right 16
+         left 16
+         right 16
         // top 64
         // bottom 64
     }
@@ -126,7 +134,22 @@ prefer-no-csd
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
 // The path is formatted with strftime(3) to give you the screenshot date and time.
+
 screenshot-path "~/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S.png"
+
+window-rule {
+    geometry-corner-radius 20
+    clip-to-geometry true
+}
+
+layer-rule {
+    match namespace="^quickshell-wallpaper$"
+}
+
+layer-rule {
+    match namespace="^quickshell-overview$"
+    place-within-backdrop true
+}
 
 
 window-rule {
@@ -171,16 +194,36 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return { spawn "alacritty" "-e" "tmux" "new" "-A"; }
     Mod+Shift+Return { spawn "alacritty" "-e" "tmux"; }
-    Mod+D { spawn "fuzzel"; }
-    Super+Alt+L { spawn "swaylock"; }
+  
+    Mod+N { spawn-sh "qs -c noctalia-shell ipc call notifications toggleHistory"; }
+    Mod+Y { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
+    Mod+Z { spawn-sh "qs -c noctalia-shell ipc call sidePanel toggle"; }
+    Mod+C { spawn-sh "qs -c noctalia-shell ipc call launcher calculator"; }
+    Mod+B { spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"; }
+    Mod+D { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+9 { spawn-sh "qs -c noctalia-shell ipc call volume muteInput"; }
+    Mod+8 { spawn-sh "qs -c noctalia-shell ipc call volume muteOutput"; }
+    Super+Alt+L { spawn-sh "noctalia-shell ipc call lockScreen toggle"; }
+
+   // Mod+S {; }
 
     Mod+P {spawn "~/personal/personal/scripts/windowpicker.sh"; }
-    Mod+6 { spawn "zen"; }
-    Mod+7 { spawn "thunar"; }
-    Mod+8 { spawn ""; }
 
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
-
+    Mod+1 { focus-workspace "main"; }
+    Mod+2 { focus-workspace "games"; }
+    Mod+3 { focus-workspace "art"; }
+    Mod+S { focus-workspace "scratchpad"; }
+    Mod+4 { focus-workspace "2nd main"; }
+    Mod+5 { focus-workspace 6; }
+    Mod+6 { focus-workspace 7; }
+    Mod+Ctrl+1 { move-column-to-workspace 1; }
+    Mod+Ctrl+2 { move-column-to-workspace 2; }
+    Mod+Ctrl+3 { move-column-to-workspace 3; }
+    Mod+Ctrl+4 { move-column-to-workspace 4; }
+    Mod+Ctrl+5 { move-column-to-workspace 5; }
+    Mod+Ctrl+6 { move-column-to-workspace 6; }
+    Mod+Ctrl+7 { move-column-to-workspace 7; }
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
     XF86AudioRaiseVolume allow-when-locked=true hotkey-overlay-title=null{ spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
@@ -285,8 +328,6 @@ binds {
     //
     // For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
     // will all refer to the 3rd workspace.
-
-    // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
 
     // Switches focus between the current and the previous workspace.
@@ -334,7 +375,7 @@ binds {
     // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
-    Print hotkey-overlay-title=null{ spawn "~/personal/personal/scripts/testupload.sh"; }
+    Print hotkey-overlay-title=null{ screenshot; }
     Ctrl+Print hotkey-overlay-title=null{ screenshot-screen; }
     Alt+Print hotkey-overlay-title=null{ screenshot-window; }
 
@@ -343,12 +384,12 @@ binds {
     Mod+Shift+R cooldown-ms=500 hotkey-overlay-title="Record Region with Sound" { spawn "~/personal/personal/scripts/testrecord.sh" "--sound"; }
     Mod+Ctrl+Shift+R cooldown-ms=500 hotkey-overlay-title="Record Fullscreen with Sound" { spawn "~/personal/personal/scripts/testrecord.sh" "--fullscreen-sound"; }
 
-    Mod+B hotkey-overlay-title="Clipboard History" { spawn "bash" "/home/wumps/personal/personal/scripts/cliphistory.sh"; }
+   // Mod+B hotkey-overlay-title="Clipboard History" { spawn "bash" "/home/wumps/personal/personal/scripts/cliphistory.sh"; }
    // Mod+B hotkey-overlay-title="Clipboard History" { spawn "clipse-gui"; }
     
     Alt+Tab hotkey-overlay-title="Toggle Overview" { toggle-overview; }
 
-    Mod+T { expand-column-to-available-width; }
+    Mod+Tab { expand-column-to-available-width; }
     
     // The quit action will show a confirmation dialog to avoid accidental exits.
     Mod+Shift+E { quit; }
@@ -373,6 +414,7 @@ hotkey-overlay {
 
 window-rule {
         match app-id="firefox" title="^[Main]$"
+        match app-id="chromium"
         open-on-workspace "main"
     }
 
@@ -412,9 +454,16 @@ window-rule {
         match app-id="CLIP STUDIO PAINT"
         match app-id="sai2.exe" 
         match app-id="REAPER"
+        match app-id="Aseprite"
         open-on-workspace "art"
 }
-
+// scratchpad apps
+window-rule {
+        match app-id="com.github.th_ch.youtube_music"
+        match app-id="org.gnome.Nautilus"
+        match app-id="Alacritty"
+        open-on-workspace "scratchpad"
+}
 window-rule {
     match is-window-cast-target=true
 
@@ -439,21 +488,17 @@ window-rule {
 }
 
 
-debug {
-    wait-for-frame-completion-before-queueing
-    wait-for-frame-completion-in-pipewire
-}
+
 
 // Startup apps
+spawn-at-startup "qs -c noctalia-shell"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
-
-spawn-at-startup "xwayland-satellite"
 spawn-at-startup "vesktop"
 spawn-at-startup "steam"
-spawn-at-startup "zen"
+spawn-at-startup "chromium"
+spawn-at-startup "com.github.th_ch.youtube_music"
 
 environment {
-    DISPLAY ":0"
     QT_QPA_PLATFORM "wayland"
 	XDG_CURRENT_DESKTOP "niri"
 }
